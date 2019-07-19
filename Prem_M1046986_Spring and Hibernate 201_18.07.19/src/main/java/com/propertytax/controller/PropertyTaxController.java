@@ -102,7 +102,7 @@ public class PropertyTaxController {
 	}
 
 	/**
-	 * Residential tax calculation.
+	 * Residential tax calculation  by RequestDTO Details.
 	 *
 	 * @param requestDto the request dto
 	 * @return the double
