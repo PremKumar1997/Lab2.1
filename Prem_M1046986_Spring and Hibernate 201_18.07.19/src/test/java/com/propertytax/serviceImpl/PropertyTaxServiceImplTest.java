@@ -18,6 +18,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.propertytax.daoimpl.PropertyTaxDaoImpl;
 import com.propertytax.dto.RequestDTO;
 import com.propertytax.entity.ResidenceTypeEntity;
 import com.propertytax.entity.UavEntity;
@@ -53,6 +54,10 @@ public class PropertyTaxServiceImplTest {
 	@Mock
 	UavRepository uavRepository;
 	
+	/** The property tax dao impl. */
+	@InjectMocks
+	private PropertyTaxDaoImpl propertyTaxDaoImpl;
+	
 	/** The environment. */
 	@Autowired
 	Environment environment;
@@ -63,6 +68,10 @@ public class PropertyTaxServiceImplTest {
 	@Before
 	public void before() {
 		ReflectionTestUtils.setField(propertyTaxServiceImpl, "environment", environment);
+		ReflectionTestUtils.setField(propertyTaxServiceImpl, "propertyTaxDaoImpl", propertyTaxDaoImpl);
+		ReflectionTestUtils.setField(propertyTaxDaoImpl, "residenceTypeRepository", residenceTypeRepository);
+		ReflectionTestUtils.setField(propertyTaxDaoImpl, "uavRepository", uavRepository);
+		ReflectionTestUtils.setField(propertyTaxDaoImpl, "zonalRepository", zonalRepository);
 	}
 
 	/**
